@@ -1,4 +1,4 @@
-# 100本ノック2026 (See English below)
+# 100本ノック2026 (See English Below)
 
 小町研・欅研の2026年度新入生に向けた勉強会として、[言語処理100本ノック](https://nlp100.github.io/2025/ja/index.html)に取り組みます。
 
