@@ -1,5 +1,9 @@
 tx = "Now I need a drink, alcoholic of course, after the heavy lectures involving quantum mechanics."
-list = []
+ans_list = []
 
 tx = tx.split()
-print(tx)
+
+for i in tx:
+    ans_list.append(len(i))
+
+print(ans_list)
