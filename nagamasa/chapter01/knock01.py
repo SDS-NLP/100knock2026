@@ -1,3 +1,3 @@
-str = "パタトクカシーー"
-result = str[1::2]
+text = "パタトクカシーー"
+result = text[1::2]
 print(result)

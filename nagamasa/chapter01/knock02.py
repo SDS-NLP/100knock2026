@@ -1,3 +1,3 @@
-str = "stressed"
-result = str[::-1]
+text = "stressed"
+result = text[::-1]
 print(result)
