@@ -1,6 +1,6 @@
 def build_element_symbol(sentence: str, single_char_positions: set) -> dict:
     words = sentence.split()
-    symbol_map = {}
+    symbol_map = {} # 結果格納先
 
     for position, word in enumerate(words, start=1):
         clean_word = word.strip(".")
@@ -13,7 +13,7 @@ def build_element_symbol(sentence: str, single_char_positions: set) -> dict:
     return symbol_map
 
 sentence = "Hi He Lied Because Boron Could Not Oxidize Fluorine. New Nations Might Also Sign Peace Security Clause. Arthur King Can."
-single_char_positions = {1, 5, 6, 7, 8, 9, 15, 16, 19}
+single_char_positions = {1, 5, 6, 7, 8, 9, 15, 16, 19} # 特別扱い
 
 result = build_element_symbol(sentence, single_char_positions)
 print(result)
