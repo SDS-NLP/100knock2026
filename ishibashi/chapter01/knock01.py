@@ -1,8 +1,7 @@
-str1 = 'パトカー'
-str2 = 'タクシー'
+str = 'パタトクカシーー'
 ans = ''
 
-for i in range(len(str1)):
-    ans += str1[i] + str2[i]
+for i in range(0, len(str), 2):
+    ans += str[i+1]
 
 print(ans)
