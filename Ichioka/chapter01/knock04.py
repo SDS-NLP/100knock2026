@@ -3,7 +3,7 @@ def build_element_symbol(sentence: str, single_char_positions: set) -> dict:
     symbol_map = {} # 結果格納先
 
     for position, word in enumerate(words, start=1):
-        clean_word = word.strip(".")
+        clean_word = word.strip()
         if position in single_char_positions:
             symbol = clean_word[0]
         else:
