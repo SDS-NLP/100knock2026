@@ -1,4 +1,4 @@
-from ch1_05 import n_gram
+from nagamasa.chapter01.knock05 import n_gram
 
 X = n_gram("paraparaparadise",2)
 Y = n_gram("paragraph",2)
