@@ -8,6 +8,10 @@ def n_gram(text, n):
 X = n_gram("paraparaparadise", 2)
 Y = n_gram("paragraph", 2)
 
+# X = set(ngram(str1, 2))
+# Y = set(ngram(str2, 2))
+#setは重複を許さないリストの関数
+
 wa =[]
 seki =[]
 sa = []
@@ -25,6 +29,10 @@ wa = seki
 for y in Y:
     if y not in wa:
         wa.append(y)
+
+# union = X | Y          # 和集合 (X ∪ Y)
+# intersection = X & Y   # 積集合 (X ∩ Y)
+# difference = X - Y
 
 print(wa)
 print(sa)
