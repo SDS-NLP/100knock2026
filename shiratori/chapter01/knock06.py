@@ -5,6 +5,9 @@ def bigram_set(seq, n=2):
     return set(result)
 
 
+# リストだと時間がかかる
+
+
 def main():
     X = bigram_set("paraparaparadise", 2)
     Y = bigram_set("paragraph", 2)
@@ -21,4 +24,5 @@ def main():
     print("se in Y:", "se" in Y)
 
 
-main()
+if __name__ == "__main__":
+    main()
