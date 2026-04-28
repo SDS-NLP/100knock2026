@@ -7,6 +7,7 @@ def randomise(txt):
 
     for word in words:
         dot = ""
+
         if word.endswith("."):
             word = word[:-1]
             dot = "."
@@ -29,4 +30,5 @@ def main():
     print(randomise(txt))
 
 
-main()
+if __name__ == "__main__":
+    main()

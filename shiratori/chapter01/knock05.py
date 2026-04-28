@@ -15,4 +15,5 @@ def main():
     print(word_bi)
 
 
-main()
+if __name__ == "__main__":
+    main()

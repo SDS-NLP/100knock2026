@@ -17,4 +17,5 @@ def main():
     print(f"復号: {decrypt}")
 
 
-main()
+if __name__ == "__main__":
+    main()
