@@ -6,7 +6,7 @@ with open(file, "r", encoding="utf-8") as f:
 config = {
     "components": {
         "compound_splitter": {
-            "split_mode": "A", # 分割モード「A（短い単語に分割）」を指定
+            "split_mode": "A", 
         }
     }
 }
@@ -15,5 +15,14 @@ text = text.replace("\n", "").replace("　", "")
 nlp = spacy.load("ja_ginza",config=config)
 doc = nlp(text)
 
+target_word = "メロス"
+
 for token in doc:
-    print(f"{token.text} --({token.dep_})--> {token.head.text}")
+    if token.text == target_word:
+        predicate = token.head
+
+        if token.dep_ == "ROOT":
+            continue
+    
+        relation = token.dep_
+        print(f"{target_word} --({relation})--> {predicate.text}")
