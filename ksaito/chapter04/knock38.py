@@ -30,7 +30,7 @@ def split_into_chapters(path):
 def extract_nouns(text):
     return [m["surface"] for m in parse_to_morphs(text) if m["pos"] == "名詞"]
 
-def culc_idf(chapters_nouns):
+def calc_idf(chapters_nouns):
     N = len(chapters_nouns)
     df = Counter()
     for nouns in chapters_nouns:
@@ -38,7 +38,7 @@ def culc_idf(chapters_nouns):
             df[word] += 1
     return {word: math.log(N / count) for word, count in df.items()}
 
-def culc_tf(nouns):
+def calc_tf(nouns):
     counter = Counter(nouns)
     total = sum(counter.values())
     return {word: count / total for word, count in counter.items()}
@@ -48,15 +48,17 @@ if __name__ == "__main__":
     chapters_nouns = [extract_nouns(ch) for ch in chapters]
     print(f"総章数: {len(chapters)}")
 
-    idf = culc_idf(chapters_nouns)
+    idf = calc_idf(chapters_nouns)
 
     target_idx = 90
     target_nouns = chapters_nouns[target_idx]
-    tf = culc_tf(target_nouns)
+    tf = calc_tf(target_nouns)
 
     tfidf = {word: tf[word] * idf[word] for word in tf}
 
     print(f"第{target_idx}章の TF-IDF 上位20:")
-    sorted_tfidf = sorted(tfidf.items(), key=lambda x: x[1], reverse=True)
+    print("単語\tTF\tIDF\tTF-IDF")
+    print("-" * 38)
+    sorted_tfidf = sorted(tfidf.items(), key=lambda item: item[1], reverse=True)
     for word, score in sorted_tfidf[:20]:
-        print(f"{word:<10}{tf[word]:>10.4f}{idf[word]:>8.2f}{score:>10.4f}")
+        print(f"{word}\t{tf[word]:.4f}\t{idf[word]:.2f}\t{score:.4f}")
