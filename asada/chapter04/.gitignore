@@ -1,0 +1,7 @@
+.python-version
+*.png
+/.venv
+README.md
+pyproject.toml
+uv.lock
+kokoro.txt
