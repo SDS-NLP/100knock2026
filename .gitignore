@@ -1,3 +1,8 @@
+# Ichioka
+kokoro.txt
+uv.lock
+word_frequency_loglog.png
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

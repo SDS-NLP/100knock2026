@@ -1,0 +1,15 @@
+[project]
+name = "ichioka"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "numpy==1.26.4",
+    "spacy==3.7.5",
+    "ginza>=5.2.0",
+    "ja-ginza>=5.2.0",
+    "mecab-python3>=1.0.12",
+    "unidic-lite>=1.0.8",
+    "matplotlib>=3.10.9",
+]
