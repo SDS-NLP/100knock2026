@@ -1,3 +1,8 @@
+#yamamoto
+.vscode
+dependency_tree
+dependency_tree.png
+
 # Ichioka
 kokoro.txt
 uv.lock
