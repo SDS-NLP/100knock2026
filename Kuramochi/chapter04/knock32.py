@@ -11,15 +11,15 @@ text = """
 
 def extract_noun_no_noun(text):
     tokenizer = Tokenizer()
-    tokens = list(tokenizer.tokenize(text))
-    phrases = []
+    tokens    = list(tokenizer.tokenize(text))
+    phrases   = []
 
     for i in range(len(tokens) - 2):
-        first = tokens[i]
+        first  = tokens[i]
         middle = tokens[i + 1]
         second = tokens[i + 2]
 
-        first_pos = first.part_of_speech.split(',')[0]
+        first_pos  = first.part_of_speech.split(',')[0]
         middle_pos = middle.part_of_speech.split(',')[0]
         second_pos = second.part_of_speech.split(',')[0]
 
