@@ -1,4 +1,5 @@
 from janome.tokenizer import Tokenizer
+from knock30 import extract_verbs
 
 text = """
 メロスは激怒した。
@@ -9,15 +10,7 @@ text = """
 けれども邪悪に対しては、人一倍に敏感であった。
 """
 
-def extract_verbs_with_base(text):
-    t = Tokenizer()
-    verbs = []
-    for token in t.tokenize(text):
-        pos = token.part_of_speech.split(',')[0]
-        if pos == '動詞':
-            verbs.append((token.surface, token.base_form))
-    return verbs
-
 if __name__ == "__main__":
-    for surface, base in extract_verbs_with_base(text):
-        print(f"{surface}\t{base}")
+    verbs = extract_verbs(text)
+    for surface, base in verbs:
+        print(f"{base}")

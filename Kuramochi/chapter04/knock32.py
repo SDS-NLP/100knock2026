@@ -9,25 +9,28 @@ text = """
 けれども邪悪に対しては、人一倍に敏感であった。
 """
 
-def extract_noun_no_noun(text):
+
+def extract_noun_phrases(text):
     tokenizer = Tokenizer()
-    tokens    = list(tokenizer.tokenize(text))
-    phrases   = []
+    tokens    = [token for token in tokenizer.tokenize(text)]
+    # なぜtokensで出力すると、変になりtokens[0]で出力すると正常なのか？ --- IGNORE ---
+    print(tokens[0:5]) # 範囲で出力すると変になる。
 
+    noun_phrases = []
     for i in range(len(tokens) - 2):
-        first  = tokens[i]
-        middle = tokens[i + 1]
-        second = tokens[i + 2]
+        left  = tokens[i]
+        mid   = tokens[i + 1]
+        right = tokens[i + 2]
 
-        first_pos  = first.part_of_speech.split(',')[0]
-        middle_pos = middle.part_of_speech.split(',')[0]
-        second_pos = second.part_of_speech.split(',')[0]
+        left_pos  = left.part_of_speech.split(',')[0]
+        right_pos = right.part_of_speech.split(',')[0]
 
-        if first_pos == '名詞' and middle.surface == 'の' and middle_pos == '助詞' and second_pos == '名詞':
-            phrases.append(first.surface + middle.surface + second.surface)
+        if left_pos == '名詞' and mid.surface == 'の' and right_pos == '名詞':
+            noun_phrases.append(left.surface + mid.surface + right.surface)
 
-    return phrases
+    return noun_phrases
 
-if __name__ == "__main__":
-    for phrase in extract_noun_no_noun(text):
+
+if __name__ == '__main__':
+    for phrase in extract_noun_phrases(text):
         print(phrase)

@@ -9,16 +9,20 @@ text = """
 けれども邪悪に対しては、人一倍に敏感であった。
 """
 def extract_verbs(text):
-    t = Tokenizer()
+
+    t     = Tokenizer()
     verbs = []
+
     for token in t.tokenize(text):
-        part_of_speech = token.part_of_speech.split(',')[0]
-        if part_of_speech == '動詞':
-            verbs.append(token.surface)
-    return verbs
+        print(token)                # テキストを形態素解析して、各トークンを処理
+        pos = token.part_of_speech.split(',')[0]  # 品詞を取得
+        if pos == '動詞':                          # 品詞が動詞であれば
+            verbs.append((token.surface, token.base_form)) # 表層形と基本形を
+
+    return verbs   
 
 if __name__ == "__main__":
     verbs = extract_verbs(text)
-    print("抽出された動詞:")
+    print(verbs)
     for verb in verbs:
         print(verb)
