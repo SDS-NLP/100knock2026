@@ -59,34 +59,41 @@ def plot_progress(users: np.array, scores: np.array):
             label=label,
         )
     today = datetime.date.today()
-    date_list = list()
-    # date_list.append(datetime.date(2026, 4, 14))
-    date_list.append(datetime.date(2026, 4, 21))
-    date_list.append(datetime.date(2026, 4, 28))
-    # date_list.append(datetime.date(2026, 5, 5))
-    date_list.append(datetime.date(2026, 5, 12))
-    date_list.append(datetime.date(2026, 5, 19))
-    date_list.append(datetime.date(2026, 5, 26))
-    date_list.append(datetime.date(2026, 6, 2))
-    date_list.append(datetime.date(2026, 6, 9))
-    date_list.append(datetime.date(2026, 6, 16))
-    date_list.append(datetime.date(2026, 6, 23))
-    date_list.append(datetime.date(2026, 6, 30))
-    # print(date_list)
-    d = [date for date in date_list if today >= date]
-    # print(date_list)
-    # print(d)
-    # print(len(d))
+    border_list = [
+        (datetime.date(2026, 4, 21), 10),
+        (datetime.date(2026, 4, 28), 20),
+        (datetime.date(2026, 5, 12), 30),
+        (datetime.date(2026, 5, 19), 40),
+        (datetime.date(2026, 5, 26), 50),
+        (datetime.date(2026, 6, 2), 55),
+        (datetime.date(2026, 6, 9), 60),
+        (datetime.date(2026, 6, 16), 65),
+        (datetime.date(2026, 6, 23), 70),
+        (datetime.date(2026, 6, 30), 75),
+        (datetime.date(2026, 7, 7), 80),
+        (datetime.date(2026, 7, 14), 85),
+        (datetime.date(2026, 7, 21), 90),
+    ]
+
+    passed_borders = [
+        border for border in border_list if today >= border[0]
+    ]
+
     xmin, xmax = plt.xlim()
-    if len(d) != 10 and len(d) != 0:
-        label = "{}Border".format(str(date_list[len(d)])[5:])
-        plt.hlines((len(d)+1) * 10, xmin, xmax, linewidth=2,
+
+    # 次の Border を灰色の点線で表示する
+    if len(passed_borders) != 0 and len(passed_borders) < len(border_list):
+        next_date, next_height = border_list[len(passed_borders)]
+        label = "{}Border".format(str(next_date)[5:])
+        plt.hlines(next_height, xmin, xmax, linewidth=2,
                    linestyle='dashed', color="gray", label=label)
         plt.xlim(xmin, xmax)
 
-    if len(d) != 0:
-        label = "{}Border".format(str(d[-1])[5:])
-        plt.hlines(len(d) * 10, xmin, xmax, linewidth=4,
+    # 今日時点の Border を赤線で表示する
+    if len(passed_borders) != 0:
+        current_date, current_height = passed_borders[-1]
+        label = "{}Border".format(str(current_date)[5:])
+        plt.hlines(current_height, xmin, xmax, linewidth=4,
                    color="red", label=label)
 
     plt.xlim(xmin, xmax)
@@ -96,7 +103,7 @@ def plot_progress(users: np.array, scores: np.array):
     # 縦軸のラベルを 10 問刻みにする
     whole = sum(QUESTIONS)
     plt.ylim(0, whole+1)
-    plt.yticks(np.arange(0, whole + 1, 10))
+    plt.yticks(np.arange(0, whole + 1, 5))
     # 凡例をグラフの外側に表示する
     plt.legend(bbox_to_anchor=(1.28, 1.0))
     plt.subplots_adjust(right=0.8)
