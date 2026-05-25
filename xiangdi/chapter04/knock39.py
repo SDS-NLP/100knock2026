@@ -1,17 +1,16 @@
 # 39. Zipfの法則
 # コーパスにおける単語の出現頻度順位を横軸、その出現頻度を縦軸として、両対数グラフをプロットせよ。
+
+import re
 import MeCab
 from collections import Counter
 import matplotlib.pyplot as plt
-import re
 
 with open("/Users/caitlyn/Downloads/kokoro.txt", encoding="utf-8") as f:
     text = f.read()
 
 text = re.sub(r"《.*?》", "", text)
-text = re.sub(r"［＃.*?］", "", text)
 text = text.replace("｜", "")
-text = text.replace("\r", "")
 
 tagger = MeCab.Tagger()
 node = tagger.parseToNode(text)
