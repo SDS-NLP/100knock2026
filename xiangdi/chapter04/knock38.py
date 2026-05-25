@@ -7,10 +7,7 @@ with open("/Users/caitlyn/Downloads/kokoro.txt", "r", encoding="utf-8") as f:
     text = f.read()
 
 text = re.sub(r"《.*?》", "", text)
-text = re.sub(r"［＃.*?］", "", text)
 text = text.replace("｜", "")
-text = text.replace("\r", "")
-
 
 documents = re.split(r"[。！？\n]", text)
 documents = [doc.strip() for doc in documents if doc.strip()]

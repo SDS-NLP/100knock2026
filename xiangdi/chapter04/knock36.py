@@ -5,11 +5,8 @@ from collections import Counter
 with open("/Users/caitlyn/Downloads/kokoro.txt", "r", encoding="utf-8") as f:
     text = f.read()
 
-text = re.sub(r"[、。・「」『』（）()［］【】《》〈〉…—！？!?]", "", text)
 text = re.sub(r"《.*?》", "", text)
-text = re.sub(r"［＃.*?］", "", text)
 text = text.replace("｜", "")
-text = text.replace("\r", "")
 
 tagger = MeCab.Tagger()
 node = tagger.parseToNode(text)
