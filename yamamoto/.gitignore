@@ -13,3 +13,6 @@ dependency_tree.png
 
 gemini_api.py
 virology.csv
+
+GoogleNews-vectors-negative300.bin.gz
+questions-words.txt
