@@ -1,0 +1,15 @@
+.venv
+.env
+__pycache__/
+*.__pyc
+.vscode
+
+popularnames.txt
+
+jawiki-country.json
+
+dependency_tree
+dependency_tree.png
+
+gemini_api.py
+virology.csv
