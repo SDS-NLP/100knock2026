@@ -11,7 +11,6 @@ import os
 from google import genai
 #from google.genai import errors, types
 
-# Zero-shot推論
 prompt = """
 「5月」をテーマに，川柳を 10 個生成してください．
 川柳は，５音・７音・５音で１つ得られる文章です．
