@@ -17,4 +17,5 @@ dependencies = [
     "pandas>=3.0.3",
     "groq>=1.2.0",
     "transformers>=5.9.0",
+    "gensim>=4.4.0",
 ]

@@ -11,7 +11,7 @@ doc = nlp("メロスは激怒した。必ず、かの邪智暴虐の王を除か
 # 文節のリストを作成
 bunsetu_list = list(ginza.bunsetu_spans(doc))
 
-# 2. 各文節をループ処理し、文節同士の係り受けを抽出
+# 各文節をループ処理し、文節同士の係り受けを抽出
 for span in bunsetu_list:
     # 現在の文節の中心（主となる単語）が、どこに係っているかを取得
     head_token = span.root.head
