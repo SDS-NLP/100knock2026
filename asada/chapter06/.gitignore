@@ -1,0 +1,7 @@
+*.bin
+*.md
+*.txt
+.python-version
+/.venv
+pyproject.toml
+uv.lock
