@@ -1,6 +1,8 @@
 *.bin
 *.md
 *.txt
+*.csv
+*.png
 .python-version
 /.venv
 pyproject.toml
