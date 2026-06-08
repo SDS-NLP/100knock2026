@@ -5,7 +5,7 @@ model = KeyedVectors.load_word2vec_format(f'C:/study/NLP100knock/100knock2026/Go
 
 
 results = []
-with open("questions-words.txt") as f:
+with open("100knock2026\questions-words.txt") as f:
     for line in f:
         line = line.strip()
         if line.startswith(":"):
