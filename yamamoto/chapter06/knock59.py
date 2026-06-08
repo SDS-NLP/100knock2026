@@ -9,6 +9,14 @@ tsne = TSNE(n_components = 2, random_state = 0, perplexity = 30) #t-SNEで次元
 vectors_tsne = tsne.fit_transform(knock57.country_vectors) #国名の単語ベクトルを2次元に圧縮
 
 plt.figure()
-plt.scatter(vectors_tsne[:, 0], vectors_tsne[:, 1], c = knock57.labels) #一応k-meansのラベルをつけて散布図を描画
+
+for vector, country, color in zip(vectors_tsne, knock57.countries, knock57.labels):
+    
+    plt.text(vector[0], vector[1], country, color = "C{}".format(color)) #点ではなく文字で描画
+
+plt.xlim([-12, 15])
+plt.ylim([-10, 15])
+
+plt.savefig("tsne_vectors.png")
 
 plt.show()
