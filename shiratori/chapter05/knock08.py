@@ -69,7 +69,7 @@ if __name__ == "__main__":
 
     results = get_reply(prompt, output)
 
-    print("\n=== 分散 ===")
+    print("\n 分散 ")
 
     for i in range(10):
         poem_scores = [result[i] for result in results]

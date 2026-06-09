@@ -18,4 +18,5 @@ with open("shiratori/chapter02/sorted09.txt", "w") as out:
         out.write(line)
 
 
-# sort -k3,3nr shiratori/chapter02/popular-names.txt
+# sort -k 3nr,3 shiratori/chapter02/popular-names.txt
+# -k 列, -n整数, -r降順
