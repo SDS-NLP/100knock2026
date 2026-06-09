@@ -1,3 +1,9 @@
 jawiki-country.json
 jawiki-country 2.json
 .env
+*.ipynb
+railway-map.jpg.avif
+
+GoogleNews-vectors-negative300.bin
+
+questions-words.txt
