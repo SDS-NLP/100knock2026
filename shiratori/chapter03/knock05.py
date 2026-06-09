@@ -1,7 +1,7 @@
 import re
 from knock00 import uk_txt
 
-# 基礎情報テンプレート全体を取得
+
 pattern = r"\{\{基礎情報.*?\n(.*?)\n\}\}"
 
 match = re.search(pattern, uk_txt, re.DOTALL)

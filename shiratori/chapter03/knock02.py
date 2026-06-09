@@ -8,6 +8,7 @@ for line in uk_txt.split("\n"):
     match = re.search(r"\[\[Category:(.*)\]\]", line)
     if match:
         categories.append(match.group(1))
+        # yeild?
 
 if __name__ == "__main__":
-    print(match.group(1))
+    print(categories)
