@@ -1,4 +1,5 @@
 #ベクトル空間上の国名に関する単語ベクトルをt-SNEで可視化せよ。
+#t-SNE:高次元空間上で距離が近いデータを圧縮後も近くなるように次元圧縮
 
 from sklearn.manifold import TSNE
 import matplotlib.pyplot as plt
