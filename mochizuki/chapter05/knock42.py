@@ -39,11 +39,11 @@ for i, row in df.iterrows():
         config={'temperature': 0},
     )
     pred = extract_answer(response.text)
-    gold = row['answer']
-    is_correct = pred == gold
+    ground_truth = row['answer']
+    is_correct = pred == ground_truth
     if is_correct:
         correct += 1
-    print(f'[{i+1}/{total}] pred={pred} gold={gold} correct={is_correct}')
+    print(f'[{i+1}/{total}] pred={pred} ground_truth={ground_truth} correct={is_correct}')
 
 print(f'\n科目: {SUBJECT}')
 print(f'正解数: {correct}/{total}')
