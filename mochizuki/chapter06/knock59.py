@@ -14,4 +14,3 @@ if __name__ == '__main__':
         plt.annotate(country, (coords[i, 0], coords[i, 1]))
     plt.tight_layout()
     plt.savefig('knock59.png')
-    print('knock59.png を保存しました')
