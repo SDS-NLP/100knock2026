@@ -7,7 +7,7 @@ result = model.most_similar(positive=["Spain", "Athens"],
 rank = 0
 for i in result:
     rank+=1
-    print(f"{rank}:{i}")
+    print(f"{rank}:{i}") 
 
 """1:('Greece', 0.6898480653762817)
 2:('Aristeidis_Grigoriadis', 0.560684859752655)

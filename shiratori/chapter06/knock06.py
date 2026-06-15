@@ -1,0 +1,27 @@
+import pandas as pd
+from gensim.models import KeyedVectors
+from scipy.stats import spearmanr
+
+
+file = "chapter06/GoogleNews-vectors-negative300.bin.gz"
+model = KeyedVectors.load_word2vec_format(file, binary=True)
+
+df = pd.read_csv("chapter06/wordsim353/combined.csv")
+
+human_scores = []
+model_scores = []
+
+
+for _, row in df.iterrows():
+    w1 = row["Word 1"]
+    w2 = row["Word 2"]
+    score = row["Human (mean)"]
+
+    if w1 in model.key_to_index and w2 in model.key_to_index:
+        human_scores.append(score)
+        model_scores.append(model.similarity(w1, w2))
+
+rho, p = spearmanr(human_scores, model_scores)
+print(f"評価対象数: {len(human_scores)}")
+print(f"Spearman相関係数: {rho:.4f}")
+print(f"p-value: {p:.4e}")

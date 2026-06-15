@@ -17,7 +17,7 @@ def tokenize(text):
             subtype = features[1]
 
             if pos == "名詞":
-                if subtype not in ["非自立", "代名詞", "数"]:
+                if subtype not in ["非自立", "代名詞"]:
                     words.append(node.surface)
 
         node = node.next
