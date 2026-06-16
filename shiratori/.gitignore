@@ -1,0 +1,34 @@
+venv/
+__pycache__/
+*.pyc
+.env
+.python-version
+
+
+# Chapter 4
+chapter04/kokoro.txt
+chapter04/kokoro_clean.txt
+chapter04/kokoro.cabocha
+chapter04/melos_tree.png
+
+# Chapter 5
+chapter05/philosophy.csv
+chapter05/philosophy_new.csv
+chapter05/output.txt
+chapter05/output2.txt
+chapter05/output04.txt
+chapter05/output05.txt
+chapter05/output06.txt
+chapter05/output07.txt
+chapter05/output08.txt
+chapter05/output09.txt
+
+# Chapter 6
+chapter06/wordsim353
+chapter06/output02.txt
+chapter06/output03.txt
+chapter06/output04.txt
+chapter06/output08.png
+chapter06/output09.png
+chapter06/GoogleNews-vectors-negative300.bin.gz
+chapter06/questions-words.txt

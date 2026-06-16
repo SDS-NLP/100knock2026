@@ -54,7 +54,7 @@ with open(csv_file, 'r', encoding='utf-8') as f:
 correlation, pvalue = spearmanr(human_scores, w2v_scores)
 
 print("\n--- 実行結果 ---")
-print(f"評価した単語ペア数: {len(human_scores)} 件 (未知語でスキップ: {skipped_count} 件)")
+print(f"評価した単語ペア数: {len(human_scores)} 件 (未知語: {skipped_count} 件)")
 print(f"スピアマン相関係数: {correlation:.4f}")
 
 #評価した単語ペア数: 353 件 (未知語でスキップ: 0 件)

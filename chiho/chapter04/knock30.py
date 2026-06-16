@@ -13,15 +13,15 @@ file_path = Path(__file__).with_name("chapter04.txt")
 with open(file_path, "r", encoding="utf-8") as f:
     text = f.read()
 
-# MeCabの解析器作成
+#MeCabの解析器作成
 mecab = MeCab.Tagger(r"-r /opt/homebrew/etc/mecabrc -d /opt/homebrew/lib/mecab/dic/ipadic")
-# node単位で解析結果を得る
 node = mecab.parseToNode(text)
 
 # while node:
 #     print(node.surface)
 #     print(node.feature)
 #     print("------")
+
 #     node = node.next
 
 while node:

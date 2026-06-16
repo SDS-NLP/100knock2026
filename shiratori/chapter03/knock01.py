@@ -10,4 +10,4 @@ for line in uk_txt.split("\n"):
         categories.append(line)
 
 if __name__ == "__main__":
-    print(line)
+    print(categories)
