@@ -1,6 +1,8 @@
 from gensim.models import KeyedVectors
 import numpy as np
 
+# ときなおし
+
 file = "chapter06/GoogleNews-vectors-negative300.bin.gz"
 
 model = KeyedVectors.load_word2vec_format(file, binary=True)
@@ -25,7 +27,6 @@ def evaluate_analogy(model, analogy_file):
             # カテゴリ行
             if line.startswith(":"):
                 category = line[2:]
-                print(f"\n=== {category} ===")
                 continue
 
             a, b, c, d = line.split()
