@@ -25,15 +25,20 @@ def extract_countries(filepath):
                 if word in model.key_to_index:
                     countries.add(word)
 
+
     return sorted(countries)
 
 
 countries = extract_countries(analogy_file)
 
+print("extracting don")
+
 X = np.array([model[country] for country in countries])
 
 # Ward法
 linkage_matrix = linkage(X, method="ward")
+
+print("making デンどグラム")
 
 # デンドログラム
 plt.figure(figsize=(20, 8))
