@@ -1,20 +1,10 @@
-import csv
 from collections import Counter
+
+from sst2_common import load_sst2, TRAIN_PATH, DEV_PATH
 
 # 60. データの入手・整形
 # SST-2 の train.tsv / dev.tsv について、ポジティブ(1)・ネガティブ(0)の事例数を数える。
-
-TRAIN_PATH = "SST-2/train.tsv"
-DEV_PATH = "SST-2/dev.tsv"
-
-
-def load_sst2(path):
-    # SST-2 の tsv を読み込む（先頭行はヘッダ "sentence\tlabel"）
-    with open(path, encoding="utf-8") as f:
-        reader = csv.reader(f, delimiter="\t")
-        next(reader)
-        return [(sentence, label) for sentence, label in reader]
-
+# 読み込みは sst2_common.load_sst2 に集約。
 
 train = load_sst2(TRAIN_PATH)
 dev = load_sst2(DEV_PATH)
