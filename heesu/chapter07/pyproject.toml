@@ -1,0 +1,9 @@
+[project]
+name = "chapter07"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.13"
+dependencies = [
+    "matplotlib>=3.11.0",
+    "scikit-learn>=1.9.0",
+]
