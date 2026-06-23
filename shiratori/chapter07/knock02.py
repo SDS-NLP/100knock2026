@@ -1,49 +1,66 @@
+import pickle
 from collections import Counter
+
 import pandas as pd
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 
 
-def make_dataset(file_path):
-    df = pd.read_csv(file_path, sep="\t")
+DATA_DIR = "chapter07/SST-2"
 
-    dataset = []
+MODEL_PATH = "logistic_regression_sst2.pkl"
+VECTORIZER_PATH = "sst2_vectorizer.pkl"
 
+
+def load_dataset(path):
+    df = pd.read_csv(path, sep="\t")
+
+    data = []
     for _, row in df.iterrows():
         feature = dict(Counter(row["sentence"].split()))
+        data.append((feature, int(row["label"])))
 
-        example = {"text": row["sentence"], "label": row["label"], "feature": feature}
-
-        dataset.append(example)
-
-    return dataset
+    return data
 
 
-train_data = make_dataset("chapter07/SST-2/train.tsv")
-dev_data = make_dataset("chapter07/SST-2/dev.tsv")
+def vectorize(train_data, dev_data):
+    vectorizer = DictVectorizer(sparse=False)
+
+    X_train = vectorizer.fit_transform([x for x, _ in train_data])
+    X_dev = vectorizer.transform([x for x, _ in dev_data])
+
+    return X_train, X_dev, vectorizer
 
 
-vectorizer = DictVectorizer()
-
-X_train = vectorizer.fit_transform([data["feature"] for data in train_data])
-
-X_dev = vectorizer.transform([data["feature"] for data in dev_data])
-
-# ラベル
-y_train = [data["label"] for data in train_data]
-y_dev = [data["label"] for data in dev_data]
+def train(X_train, y_train):
+    model = LogisticRegression(solver="liblinear", max_iter=1000, random_state=42)
+    model.fit(X_train, y_train)
+    return model
 
 
-# ロジスティック回帰モデル学習
-model = LogisticRegression(max_iter=1000)
+def main():
+    train_data = load_dataset(f"{DATA_DIR}/train.tsv")
+    dev_data = load_dataset(f"{DATA_DIR}/dev.tsv")
 
-model.fit(X_train, y_train)
+    X_train, X_dev, vectorizer = vectorize(train_data, dev_data)
+
+    y_train = [y for _, y in train_data]
+    y_dev = [y for _, y in dev_data]
+
+    model = train(X_train, y_train)
+
+    pred = model.predict(X_dev)
+    acc = accuracy_score(y_dev, pred)
+
+    print("dev accuracy:", acc)
+
+    with open(MODEL_PATH, "wb") as f:
+        pickle.dump(model, f)
+
+    with open(VECTORIZER_PATH, "wb") as f:
+        pickle.dump(vectorizer, f)
 
 
-y_pred = model.predict(X_dev)
-
-
-accuracy = accuracy_score(y_dev, y_pred)
-
-print("Accuracy:", accuracy)
+if __name__ == "__main__":
+    main()

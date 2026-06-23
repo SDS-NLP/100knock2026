@@ -7,3 +7,11 @@ railway-map.jpg.avif
 GoogleNews-vectors-negative300.bin
 
 questions-words.txt
+
+knock54_out.txt
+
+SST-2/
+sst2_lr_model.pkl
+sst2_vectorizer.pkl
+
+wordism353/

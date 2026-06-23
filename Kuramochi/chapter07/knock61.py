@@ -1,7 +1,15 @@
 import csv
 from collections import Counter
 
-def process_tsv_to_bow(file_path):
+# テキストデータを受け取って、BoW特長料を辞書型で返す関数
+def text_to_bow(text)-> dict:
+
+    tokens       = text.split()
+    count_tokens = Counter(tokens)
+
+    return dict(count_tokens)
+
+def process_tsv_to_bow(file_path) -> list:
 
     dataset = []
 

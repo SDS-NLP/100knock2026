@@ -18,11 +18,9 @@ def make_dataset(file_path):
 
 
 def main():
-    # データ読み込み
     train_data = make_dataset("chapter07/SST-2/train.tsv")
     dev_data = make_dataset("chapter07/SST-2/dev.tsv")
 
-    # 特徴量行列作成
     vectorizer = DictVectorizer()
 
     X_train = vectorizer.fit_transform([data["feature"] for data in train_data])
@@ -31,14 +29,11 @@ def main():
 
     y_train = [data["label"] for data in train_data]
 
-    # モデル学習
     model = LogisticRegression(max_iter=1000)
     model.fit(X_train, y_train)
 
-    # 検証データ先頭事例
     x = X_dev[0]
 
-    # 条件付き確率
     probabilities = model.predict_proba(x)[0]
 
     print("Text:")
