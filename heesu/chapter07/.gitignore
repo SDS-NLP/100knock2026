@@ -2,3 +2,5 @@
 __pycache__/
 *.pyc
 SST-2/
+*.png
+*.pytoml
