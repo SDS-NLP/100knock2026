@@ -1,4 +1,4 @@
-filename = "shiratori/chapter02/popular-names.txt"
+filename = "data/popular-names.txt"
 
 
 counts = {}

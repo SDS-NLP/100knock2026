@@ -3,10 +3,10 @@ from sklearn.manifold import TSNE
 import numpy as np
 import matplotlib.pyplot as plt
 
-file = "chapter06/GoogleNews-vectors-negative300.bin.gz"
+file = "data/GoogleNews-vectors-negative300.bin.gz"
 model = KeyedVectors.load_word2vec_format(file, binary=True)
 
-analogy_file = "chapter06/questions-words.txt"
+analogy_file = "data/questions-words.txt"
 
 
 def extract_countries(filepath):
@@ -50,5 +50,5 @@ for i, country in enumerate(countries):
 
 plt.title("t-SNE Visualization of Country Vectors")
 plt.tight_layout()
-plt.savefig("chapter06/t-SNE.png", dpi=300, bbox_inches="tight")
+plt.savefig("outputs/chapter06/t-SNE.png", dpi=300, bbox_inches="tight")
 plt.show()

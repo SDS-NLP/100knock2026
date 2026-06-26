@@ -99,6 +99,6 @@ def main(filename, output):
 
 if __name__ == "__main__":
 
-    filename = "chapter05/philosophy.csv"
-    output = "chapter05/output.txt"
+    filename = "data/philosophy.csv"
+    output = "data/output.txt"
     main(filename, output)

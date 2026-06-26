@@ -61,7 +61,7 @@ if __name__ == "__main__":
 ウ　藤原良房は，承和の変後，藤原氏の中での北家の優位を確立した。
 解答: 
 """
-    output = "chapter05/output01.txt"
+    output = "outputs/chapter05/output01.txt"
     get_reply(prompt, output)
 
 

@@ -18,8 +18,8 @@ def make_dataset(file_path):
 
 
 def main():
-    train_data = make_dataset("chapter07/SST-2/train.tsv")
-    dev_data = make_dataset("chapter07/SST-2/dev.tsv")
+    train_data = make_dataset("data/SST-2/train.tsv")
+    dev_data = make_dataset("datas/SST-2/dev.tsv")
 
     vectorizer = DictVectorizer()
 

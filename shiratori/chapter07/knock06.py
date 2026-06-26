@@ -4,9 +4,9 @@ from collections import Counter
 import pandas as pd
 from sklearn.metrics import confusion_matrix
 
-MODEL_PATH = "chapter07/data/logistic_regression_sst2.pkl"
-VECTORIZER_PATH = "chapter07/data/sst2_vectorizer.pkl"
-DEV_PATH = "chapter07/data/SST-2/dev.tsv"
+MODEL_PATH = "data/logistic_regression_sst2.pkl"
+VECTORIZER_PATH = "data/sst2_vectorizer.pkl"
+DEV_PATH = "data/SST-2/dev.tsv"
 
 
 def load_data(path):

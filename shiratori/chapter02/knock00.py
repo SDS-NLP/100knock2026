@@ -1,5 +1,5 @@
 count = 0
-filename = "shiratori/chapter02/popular-names.txt"
+filename = "data/popular-names.txt"
 
 with open(filename, "r") as f:
     for line in f:

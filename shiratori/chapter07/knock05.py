@@ -2,11 +2,11 @@ import pickle
 from collections import Counter
 
 
-with open("chapter07/data/logistic_regression_sst2.pkl", "rb") as f:
+with open("data/logistic_regression_sst2.pkl", "rb") as f:
     model = pickle.load(f)
 
 
-with open("chapter07/data/sst2_vectorizer.pkl", "rb") as f:
+with open("data/sst2_vectorizer.pkl", "rb") as f:
     vectorizer = pickle.load(f)
 
 # 推論したい文

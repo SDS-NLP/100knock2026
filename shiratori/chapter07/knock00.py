@@ -1,5 +1,6 @@
 import pandas as pd
-#polars
+
+# polars
 
 
 def count_pos_neg(file_path):
@@ -18,8 +19,8 @@ def count_pos_neg(file_path):
 
 
 if __name__ == "__main__":
-    file1 = "chapter07/SST-2/train.tsv"
-    file2 = "chapter07/SST-2/dev.tsv"
+    file1 = "data/SST-2/train.tsv"
+    file2 = "data/SST-2/dev.tsv"
 
     count_pos_neg(file1)
     count_pos_neg(file2)

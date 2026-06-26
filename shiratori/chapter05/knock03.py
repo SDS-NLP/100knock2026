@@ -5,7 +5,7 @@ from knock02 import main
 
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
-df = pd.read_csv("chapter05/philosophy.csv", header=None)
+df = pd.read_csv("data/philosophy.csv", header=None)
 
 
 def move_correct_to_D(row):
@@ -37,8 +37,8 @@ def move_correct_to_D(row):
 if __name__ == "__main__":
     new_df = df.apply(move_correct_to_D, axis=1)
 
-    new_df.to_csv("chapter05/philosophy_new.csv", header=False, index=False)
+    new_df.to_csv("data/philosophy_new.csv", header=False, index=False)
 
-    filename = "chapter05/philosophy.csv"
-    output = "chapter05/output_allD.txt"
+    filename = "data/philosophy.csv"
+    output = "outputs/chapter05/output_allD.txt"
     main(filename, output)
