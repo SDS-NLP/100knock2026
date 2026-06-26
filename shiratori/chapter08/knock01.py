@@ -1,34 +1,56 @@
-from gensim.models import KeyedVectors
-import numpy as np
+import pickle
+
+import pandas as pd
+import torch
+
+
+with open("data/sst2_word_to_id.pkl", "rb") as f:
+    word_to_id = pickle.load(f)
+
+
+def load_dataset(path):
+    data = pd.read_csv(path, sep="\t")
+
+    dataset = []
+
+    for _, row in data.iterrows():
+        text = row["sentence"]
+        label = row["label"]
+
+        tokens = text.split()
+
+        ids = []
+        for token in tokens:
+            if token in word_to_id:
+                ids.append(word_to_id[token])
+        # 全部未知なら飛ばす
+        if len(ids) == 0:
+            continue
+
+        dataset.append(
+            {
+                "text": text,
+                "label": torch.tensor([label], dtype=torch.float),
+                "input_ids": torch.tensor(ids, dtype=torch.long),
+            }
+        )
+
+    return dataset
 
 
 def main():
-    model = KeyedVectors.load_word2vec_format("data/GoogleNews-vectors-negative300.bin.gz", binary=True)
+    train_dataset = load_dataset("data/SST-2/train.tsv")
+    dev_dataset = load_dataset("data/SST-2/dev.tsv")
 
-    vocab_size = len(model.key_to_index)
-    embedding_dim = model.vector_size
+    print(train_dataset[0])
+    print(f"train size: {len(train_dataset)}")
+    print(f"dev size: {len(dev_dataset)}")
 
-    embedding_matrix = np.zeros((vocab_size + 1, embedding_dim))
+    with open("data/sst2_train_dataset.pkl", "wb") as f:
+        pickle.dump(train_dataset, f)
 
-    word_to_id = {"<PAD>": 0}
-    id_to_word = {0: "<PAD>"}
-
-    for i, word in enumerate(model.key_to_index, start=1):
-        embedding_matrix[i] = model[word]
-        word_to_id[word] = i
-        id_to_word[i] = word
-
-    print("V =", vocab_size)
-    print("d_emb =", embedding_dim)
-    print("embedding_matrix.shape =", embedding_matrix.shape)
-
-    print("word_to_id['<PAD>'] =", word_to_id["<PAD>"])
-    print("id_to_word[0] =", id_to_word[0])
-
-    first_word = list(model.key_to_index.keys())[0]
-    print("最初の単語:", first_word)
-    print("そのID:", word_to_id[first_word])
-    print("IDから単語:", id_to_word[word_to_id[first_word]])
+    with open("data/sst2_dev_dataset.pkl", "wb") as f:
+        pickle.dump(dev_dataset, f)
 
 
 if __name__ == "__main__":
