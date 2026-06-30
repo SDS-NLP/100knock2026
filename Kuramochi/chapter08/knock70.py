@@ -40,5 +40,5 @@ def main(file_path: str, word: str)->list:
 
 if __name__ == "__main__":
     file_path = "GoogleNews-vectors-negative300.bin"
-    word      = "adult"
+    word      = "sushi"
     main(file_path, word)
