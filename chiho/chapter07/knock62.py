@@ -24,7 +24,7 @@ def vectorize_data(train_data, dev_data):
 
 
 def train_model(train_x, train_y):
-    # 中規模までのデータに向いている重み最適化アルゴリズム
+    # 中規模までのデータに向いている重み最適化アルゴリズム，
     model = LogisticRegression(solver="liblinear", max_iter=1000, random_state=42)
     model.fit(train_x, train_y)
     return model
