@@ -13,7 +13,7 @@ def embedding(w2v, vocab_limit):
     word2id = {"<PAD>":0}  # 単語とIDのdict (ID:0の単語は<PAD>)
     id2word = ["<PAD>"]  # 単語のlist
 
-    weights = np.zeros((vocab_size, embed_dim), dtype=np.float32) # 単語のベクトルを格納するからの行列
+    weights = np.zeros((vocab_size, embed_dim), dtype=np.float32) # 単語のベクトルを格納する行列
 
     for i, word in enumerate(w2v.index_to_key):
         idx = i+1 # 0はPADなので飛ばす

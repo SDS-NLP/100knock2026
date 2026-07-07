@@ -3,7 +3,7 @@ import torch.nn as nn
 
 class TextClassifier(nn.Module):
     def __init__(self, embedding_tensor):
-        super().__init__() #親クラスの設定の引き継ぎ
+        super().__init__()  #親クラスの設定の引き継ぎ
 
         self.embedding = nn.Embedding.from_pretrained(
             embedding_tensor,

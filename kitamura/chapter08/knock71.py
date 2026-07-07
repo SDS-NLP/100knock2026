@@ -38,7 +38,7 @@ with open("./SST-2/dev.tsv", "r", encoding="utf-8") as f:
         dev.append(line.strip().split("\t"))
 
 file_name = "word2vec_vocab_embedding.pt"
-loaded_data = torch.load(file_name)  # 環境によっては引数に weights_only=False が必要です
+loaded_data = torch.load(file_name)  
 word2id = loaded_data['word2id']
 
 
