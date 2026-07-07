@@ -89,7 +89,7 @@ dev_loader = DataLoader(
 )
 
 model = DeepTextClassifier(embedding_tensor)
-criterion = nn.BCEWithLogitsLoss()  #2値分類なのでbinary cross entropy
+criterion = nn.BCEWithLogitsLoss()   #2値分類なのでbinary cross entropy
 optimizer = torch.optim.SGD(model.parameters(), lr=0.1)
 epochs = 10
 
