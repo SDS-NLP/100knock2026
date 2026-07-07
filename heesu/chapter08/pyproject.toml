@@ -1,0 +1,19 @@
+[project]
+name = "chapter08"
+version = "0.1.0"
+description = "NLP100 2026 chapter08 (neural networks for sentiment classification)"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "gensim>=4.4.0",
+    "numpy>=1.26",
+    "torch>=2.7",
+]
+
+# RTX 5080 (Blackwell, sm_120) needs a CUDA 12.8 build of PyTorch.
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
