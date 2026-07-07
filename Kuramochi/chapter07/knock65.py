@@ -1,6 +1,5 @@
 "テキストデータを定義→辞書形式に変換→ベクトル化→学習済みモデルで予測（0: ネガティブ、1: ポジティブ）"
 
-
 import joblib
 from collections import Counter
 

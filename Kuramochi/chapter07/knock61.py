@@ -46,5 +46,5 @@ if __name__ == "__main__":
 
     # 2. 学習データの最初の事例について、正しく変換できたか目視確認
     if train_data:
-        first_instance = train_data[0]
+        first_instance = train_data
         print(first_instance)
