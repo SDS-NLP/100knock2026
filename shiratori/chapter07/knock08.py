@@ -1,8 +1,8 @@
 import pickle
 import pandas as pd
 
-MODEL_PATH = "chapter07/data/logistic_regression_sst2.pkl"
-VECTORIZER_PATH = "chapter07/data/sst2_vectorizer.pkl"
+MODEL_PATH = "data/logistic_regression_sst2.pkl"
+VECTORIZER_PATH = "data/sst2_vectorizer.pkl"
 
 
 def load_data(path):

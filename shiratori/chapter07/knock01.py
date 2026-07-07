@@ -20,8 +20,8 @@ def make_dataset(file_path):
     return dataset
 
 
-train_data = make_dataset("chapter07/SST-2/train.tsv")
-dev_data = make_dataset("chapter07/SST-2/dev.tsv")
+train_data = make_dataset("data/SST-2/train.tsv")
+dev_data = make_dataset("data/SST-2/dev.tsv")
 
 
 print(train_data[0])

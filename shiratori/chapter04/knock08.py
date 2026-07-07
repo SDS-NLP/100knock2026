@@ -29,7 +29,7 @@ def split_sentences(text):
 
 
 def main():
-    with open("chapter04/kokoro.txt", "r", encoding="utf-8") as f:
+    with open("outputs/kokoro.txt", "r", encoding="utf-8") as f:
         text = f.read()
 
     sentences = split_sentences(text)

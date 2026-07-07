@@ -2,10 +2,10 @@ from gensim.models import KeyedVectors
 from sklearn.cluster import KMeans
 import numpy as np
 
-file = "chapter06/GoogleNews-vectors-negative300.bin.gz"
+file = "data/GoogleNews-vectors-negative300.bin.gz"
 model = KeyedVectors.load_word2vec_format(file, binary=True)
 
-analogy_file = "chapter06/questions-words.txt"
+analogy_file = "data/questions-words.txt"
 
 
 def extract_countries(filepath):

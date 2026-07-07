@@ -33,5 +33,5 @@ if __name__ == "__main__":
     """
     prompt = prompt.replace("*", "")
     print(prompt)
-    output = "chapter05/output07.txt"
+    output = "outputs/chapter05/output07.txt"
     get_reply(prompt, output)

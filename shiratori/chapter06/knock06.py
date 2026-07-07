@@ -6,7 +6,7 @@ from scipy.stats import spearmanr
 file = "chapter06/GoogleNews-vectors-negative300.bin.gz"
 model = KeyedVectors.load_word2vec_format(file, binary=True)
 
-df = pd.read_csv("chapter06/wordsim353/combined.csv")
+df = pd.read_csv("data/wordsim353/combined.csv")
 
 human_scores = []
 model_scores = []
