@@ -15,7 +15,7 @@ class DeepTextClassifier(nn.Module):
         )
         embed_dim = embedding_tensor.size(1)
         self.linear1 = nn.Linear(embed_dim, hidden_dim)  # 128次元に圧縮
-        self.dropout = nn.Dropout(drop_rate)  # 過学習を防ぐために50%の確率でシャットダウン
+        self.dropout = nn.Dropout(drop_rate)   # 過学習を防ぐために50%の確率でシャットダウン
         self.linear2 = nn.linear(hidden_dim, 1)
 
     def forward(self, x):

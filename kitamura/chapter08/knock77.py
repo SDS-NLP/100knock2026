@@ -118,6 +118,7 @@ dev_acc = calculate_accuracy(model, dev_loader)
 print(train_acc)
 print(dev_acc)
 
+
 """0.8417104276069017
 0.7958715596330275
 """
