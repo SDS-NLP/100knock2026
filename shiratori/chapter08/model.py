@@ -17,7 +17,7 @@ class BoWClassifier(nn.Module):
 
         x = self.embedding(input_ids)
 
-        x = x.mean(dim=0)
+        x = x.mean(dim=1)
 
         x = self.linear(x)
 

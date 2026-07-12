@@ -5,7 +5,6 @@ import torch
 import torch.nn as nn
 from model import BoWClassifier
 
-# 読み込み
 embedding_matrix = np.load("data/embedding_matrix.npy")
 
 with open("data/sst2_train_dataset.pkl", "rb") as f:

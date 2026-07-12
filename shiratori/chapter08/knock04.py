@@ -31,7 +31,7 @@ def main():
 
             pred = torch.sigmoid(output)
 
-            pred_label = 1 if pred >= 0.5 else 0
+            pred_label = 1 if pred >= 0.5 else 0  # コンペの時とかは0.5より上げることも
 
             if pred_label == int(label.item()):
                 correct += 1
