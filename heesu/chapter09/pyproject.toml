@@ -1,0 +1,19 @@
+[project]
+name = "chapter09"
+version = "0.1.0"
+description = "NLP100 2026 chapter09 (BERT)"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "numpy>=1.26",
+    "torch>=2.7",
+    "transformers>=4.44",
+]
+
+# RTX 5080 (Blackwell, sm_120) needs a CUDA 12.8 build of PyTorch.
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
