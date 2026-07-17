@@ -27,8 +27,8 @@ def get_device() -> torch.device:
 
 class FineTuningSentenceLogisticRegression(nn.Module):
     """
-    単語埋め込みの平均ベクトルで文を表し、2値分類するモデル。
-    問題72の SentenceLogisticRegression とほぼ同じで，
+    単語埋め込みの平均ベクトルで文を表し、2値分類するモデル
+    問題72の SentenceLogisticRegression とほぼ同じ
     nn.Embedding.from_pretrained(..., freeze=False) にしている点が違う。
     freeze=False にすることで学習中に単語埋め込み行列も更新
     """
@@ -37,7 +37,8 @@ class FineTuningSentenceLogisticRegression(nn.Module):
         super().__init__()
 
         self.embedding = nn.Embedding.from_pretrained(
-            embedding_matrix,
+            # 埋め込み層をつくる
+            embedding_matrix, # 初期値
             freeze=False,  # ファインチューニング！単語ベクトルも学習中に更新される
             padding_idx=0,  # 0番は <PAD> 
             sparse=True,  # 巨大な埋め込み行列でも、使った単語だけ勾配を持つようにする
@@ -47,17 +48,18 @@ class FineTuningSentenceLogisticRegression(nn.Module):
     def encode(self, input_ids: torch.Tensor) -> torch.Tensor:
         """
         単語ID列を文ベクトルにする
+        長さを揃えるためのパディングを考慮して平均ベクトルをとる
         """
         embeddings = self.embedding(input_ids)
 
         # input_ids != 0 の位置だけ True になるマスクを作る。
-        # unsqueeze(-1) で埋め込み次元方向にも掛け算できる形にする。
+        # unsqueeze(-1) で 「バッチサイズ × 文の長さ」に次元を一つ追加して300次元全体にかけやすくする
         valid_mask = (input_ids != 0).unsqueeze(-1)
 
         # PAD 部分のベクトルを 0 にしてから、トークン方向に合計する。
         summed = (embeddings * valid_mask).sum(dim=1)
 
-        # PAD を除いた実際の単語数。0除算を避けるため clamp(min=1) しておく。
+        # PAD を除いた実際の単語数。0除算を避けるため clamp(min=1) しておく
         lengths = valid_mask.sum(dim=1).clamp(min=1)
 
         return summed / lengths
