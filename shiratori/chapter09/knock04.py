@@ -33,3 +33,27 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# "The movie was full of fun."
+# "The movie was full of excitement."
+# Cosine similarity: 0.9568
+
+# "The movie was full of fun."
+# "The movie was full of crap."
+# Cosine similarity: 0.8490
+
+# "The movie was full of fun."
+# "The movie was full of rubbish."
+# Cosine similarity: 0.8169
+
+# "The movie was full of excitement."
+# "The movie was full of crap."
+# Cosine similarity: 0.8352
+
+# "The movie was full of excitement."
+# "The movie was full of rubbish."
+# Cosine similarity: 0.7938
+
+# "The movie was full of crap."
+# "The movie was full of rubbish."
+# Cosine similarity: 0.9226
