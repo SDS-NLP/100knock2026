@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+SST-2/
+SST-2.zip
+GoogleNews*
+*.pt
+*.log
+*.png

@@ -29,12 +29,13 @@ def make_features(data):
     ]
 
 
-def train_model(train_data):
+def train_model(train_data, C=1.0):
     # BoW辞書のリストを疎行列化し、ロジスティック回帰を学習する。
+    # C = 正則化の逆数。既定 1.0 は sklearn 既定と同じ → knock62-68 は呼び出し・結果とも無変化。
     # 返り値: (vectorizer, clf)。検証データは同じ vectorizer で transform すること。
     vec = DictVectorizer()
     X_train = vec.fit_transform([d["feature"] for d in train_data])
     y_train = [d["label"] for d in train_data]
-    clf = LogisticRegression(max_iter=1000)
+    clf = LogisticRegression(C=C, max_iter=1000)
     clf.fit(X_train, y_train)
     return vec, clf

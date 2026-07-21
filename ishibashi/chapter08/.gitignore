@@ -1,0 +1,7 @@
+SST-2/
+*.joblib
+*.pt
+GoogleNews-vectors-negative300.bin.gz
+GoogleNews-vectors-negative300.bin
+__pycache__/
+.DS_Store

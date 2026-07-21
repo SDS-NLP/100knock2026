@@ -7,7 +7,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 
 
-DATA_DIR = "chapter07/SST-2"
+DATA_DIR = "data/SST-2"
 
 MODEL_PATH = "logistic_regression_sst2.pkl"
 VECTORIZER_PATH = "sst2_vectorizer.pkl"

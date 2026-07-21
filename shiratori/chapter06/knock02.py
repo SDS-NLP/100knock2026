@@ -1,7 +1,7 @@
 from gensim.models import KeyedVectors
 
-file = "chapter06/GoogleNews-vectors-negative300.bin.gz"
-output = "chapter06/output02.txt"
+file = "data/GoogleNews-vectors-negative300.bin.gz"
+output = "outputs/chapter06/output02.txt"
 
 model = KeyedVectors.load_word2vec_format(file, binary=True)
 

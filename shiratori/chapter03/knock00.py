@@ -1,6 +1,6 @@
 import json
 
-filename = "shiratori/chapter03/jawiki-country.json"
+filename = "data/jawiki-country.json"
 
 with open(filename, "r") as f:
     for line in f:

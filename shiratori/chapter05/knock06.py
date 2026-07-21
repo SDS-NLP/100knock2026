@@ -20,5 +20,5 @@ if __name__ == "__main__":
     prompt = """
     初夏をテーマに川柳を10個考えよ
     """
-    output = "chapter05/output06.txt"
+    output = "outputs/chapter05/output06.txt"
     get_reply(prompt, output)

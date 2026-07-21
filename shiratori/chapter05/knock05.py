@@ -26,5 +26,5 @@ if __name__ == "__main__":
     """
     prompt2 = """さらに、つばめちゃんが自由が丘駅で乗り換えたとき、先ほどとは反対方向の急行電車に間違って乗車してしまった場合を考えます。目的地の駅に向かうため、自由が丘の次の急行停車駅で降車した後、反対方向の各駅停車に乗車した場合、何駅先の駅で降りれば良いでしょうか？
     """
-    output = "chapter05/output05.txt"
+    output = "outputschapter05/output05.txt"
     get_reply(prompt1, prompt2, output)

@@ -6,8 +6,8 @@ from sklearn.feature_extraction import DictVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 
-TRAIN_PATH = "chapter07/data/SST-2/train.tsv"
-DEV_PATH = "chapter07/data/SST-2/dev.tsv"
+TRAIN_PATH = "data/SST-2/train.tsv"
+DEV_PATH = "data/SST-2/dev.tsv"
 
 
 def text2bow(text):

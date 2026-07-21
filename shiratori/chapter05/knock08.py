@@ -65,7 +65,7 @@ if __name__ == "__main__":
     """
     prompt = prompt.replace("*", "")
 
-    output = "chapter05/output08.txt"
+    output = "outputs/chapter05/output08.txt"
 
     results = get_reply(prompt, output)
 

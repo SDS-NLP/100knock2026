@@ -3,10 +3,10 @@ import numpy as np
 from scipy.cluster.hierarchy import linkage, dendrogram
 import matplotlib.pyplot as plt
 
-file = "chapter06/GoogleNews-vectors-negative300.bin.gz"
+file = "data/GoogleNews-vectors-negative300.bin.gz"
 model = KeyedVectors.load_word2vec_format(file, binary=True)
 
-analogy_file = "chapter06/questions-words.txt"
+analogy_file = "data/questions-words.txt"
 
 
 def extract_countries(filepath):
@@ -24,7 +24,6 @@ def extract_countries(filepath):
             for word in words:
                 if word in model.key_to_index:
                     countries.add(word)
-
 
     return sorted(countries)
 
@@ -49,6 +48,6 @@ plt.title("Ward Hierarchical Clustering of Countries")
 plt.xlabel("Country")
 plt.ylabel("Distance")
 plt.tight_layout()
-plt.savefig("chapter06/countries_dendrogram.png", dpi=300, bbox_inches="tight")
+plt.savefig("outputs/chapter06/countries_dendrogram.png", dpi=300, bbox_inches="tight")
 
 plt.show()

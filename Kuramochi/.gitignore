@@ -15,3 +15,5 @@ sst2_lr_model.pkl
 sst2_vectorizer.pkl
 
 wordism353/
+
+checkpoint.pth

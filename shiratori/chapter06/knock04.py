@@ -1,11 +1,11 @@
 from gensim.models import KeyedVectors
 
-file = "chapter06/GoogleNews-vectors-negative300.bin.gz"
-output = "chapter06/output04.txt"
+file = "data/GoogleNews-vectors-negative300.bin.gz"
+output = "outputs/chapter06/output04.txt"
 
 model = KeyedVectors.load_word2vec_format(file, binary=True)
 
-analogy = "chapter06/questions-words.txt"
+analogy = "data/questions-words.txt"
 
 with open(analogy, encoding="utf-8") as f:
     with open(output, "w", encoding="utf-8") as out:
