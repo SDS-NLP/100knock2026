@@ -8,17 +8,20 @@ from torch import optim
 
 from knock72 import BoWClassifier
 
-
+# BoWモデルを訓練データで学習するための関数
 def train_model(model, train_dataset, epochs=5, lr=1e-3, seed=42, log_interval=5000):
     random.seed(seed)
     torch.manual_seed(seed)
 
+    # 損失関数の設定
     criterion = nn.BCEWithLogitsLoss()
+    # 最適化手法の設定
     optimizer = optim.Adam(
         [parameter for parameter in model.parameters() if parameter.requires_grad],
         lr=lr,
     )
 
+    # エポックごとに学習を実行
     for epoch in range(1, epochs + 1):
         model.train()
         shuffled_dataset = train_dataset.copy()
