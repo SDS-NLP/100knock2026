@@ -22,3 +22,7 @@ tsne.png
 tsne_vectors.png
 
 SST-2/
+
+model.pt
+
+knock_bert
