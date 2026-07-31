@@ -4,7 +4,7 @@ from torch.utils.data import DataLoader
 from torchmetrics import Accuracy
 
 from knock70 import WordEmbeddingToolkit
-from knock71 import tokenize
+from knock71 import register_wordex, remap_ids, tokenize
 from knock72 import ModelV1
 from knock75 import collate
 
@@ -13,8 +13,18 @@ TRAIN_PATH = "SST-2/train.tsv"
 DEV_PATH = "SST-2/dev.tsv"
 df_train = tokenize(TRAIN_PATH, toolkit)
 df_dev = tokenize(DEV_PATH, toolkit)
-X_train = df_train.get_column("input_ids").to_list()
-X_dev = df_dev.get_column("input_ids").to_list()
+train_input_ids = df_train.get_column("input_ids").to_list()
+dev_input_ids = df_dev.get_column("input_ids").to_list()
+
+# データセットで使われている単語を収集
+train_wordex = register_wordex(train_input_ids)
+dev_wordex = register_wordex(dev_input_ids)
+wordex = sorted(list(train_wordex | dev_wordex))
+pre_weight = toolkit.matrix[wordex]
+id_map = {old: new for new, old in enumerate(wordex)}
+X_train = remap_ids(train_input_ids, id_map)
+X_dev = remap_ids(dev_input_ids, id_map)
+
 y_train = df_train.get_column("label").to_list()
 y_dev = df_dev.get_column("label").to_list()
 train_dataset = list(zip(X_train, y_train))
@@ -25,8 +35,8 @@ train_loader = DataLoader(
 )
 dev_loader = DataLoader(dev_dataset, batch_size=batch_size, collate_fn=collate)
 device = "cuda" if torch.cuda.is_available() else "cpu"
-input_dim = torch.tensor(df_train.get_column("mean_vector").to_list()).shape[1]
-model_1 = ModelV1(input_dim, toolkit.matrix).to(device)
+input_dim = len(df_train.get_column("mean_vector")[0])
+model_1 = ModelV1(input_dim, pre_weight, freeze=False).to(device)
 loss_fn = nn.BCEWithLogitsLoss()
 optimizer = torch.optim.SGD(model_1.parameters(), lr=0.1)
 torchmetrics_accuracy = Accuracy(task="binary").to(device)
@@ -68,14 +78,15 @@ print(
 )
 
 # Result
-# Epoch: 0 | Loss: 0.67677, Accuracy: 56.47%
-# Epoch: 100 | Loss: 0.43031, Accuracy: 83.36%
-# Epoch: 200 | Loss: 0.40744, Accuracy: 83.88%
-# Epoch: 300 | Loss: 0.39801, Accuracy: 84.19%
-# Epoch: 400 | Loss: 0.39282, Accuracy: 84.36%
-# Epoch: 500 | Loss: 0.39016, Accuracy: 84.44%
-# Epoch: 600 | Loss: 0.38854, Accuracy: 84.37%
-# Epoch: 700 | Loss: 0.38645, Accuracy: 84.43%
-# Epoch: 800 | Loss: 0.38521, Accuracy: 84.52%
-# Epoch: 900 | Loss: 0.38446, Accuracy: 84.62%
-# Dev Loss: 0.49446, Dev Accuracy: 80.28%
+# ◎ uv run knock78.py
+# Epoch: 0 | Loss: 0.67627, Accuracy: 56.88%
+# Epoch: 100 | Loss: 0.23343, Accuracy: 92.16%
+# Epoch: 200 | Loss: 0.17980, Accuracy: 93.83%
+# Epoch: 300 | Loss: 0.15690, Accuracy: 94.56%
+# Epoch: 400 | Loss: 0.14375, Accuracy: 95.02%
+# Epoch: 500 | Loss: 0.13560, Accuracy: 95.29%
+# Epoch: 600 | Loss: 0.13019, Accuracy: 95.38%
+# Epoch: 700 | Loss: 0.12593, Accuracy: 95.49%
+# Epoch: 800 | Loss: 0.12240, Accuracy: 95.54%
+# Epoch: 900 | Loss: 0.12075, Accuracy: 95.60%
+# Dev Loss: 1.07228, Dev Accuracy: 80.16%
