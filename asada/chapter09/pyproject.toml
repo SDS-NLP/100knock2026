@@ -1,14 +1,13 @@
 [project]
-name = "chapter08"
+name = "chapter09"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "gensim>=4.4.0",
-    "numpy>=2.5.0",
-    "polars>=1.42.0",
+    "polars>=1.43.1",
     "scikit-learn>=1.9.0",
-    "torch>=2.12.1",
+    "torch>=2.13.0",
     "torchmetrics>=1.9.0",
+    "transformers>=5.14.1",
 ]
